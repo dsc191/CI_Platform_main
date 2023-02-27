@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Login Page ";
+}
+    <div class="row main">
+        <partial name="carousal"/>
+
+        <div class="login-details">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                    <input type="email" class="form-control InputField" aria-describedby="emailHelp"
+                        placeholder="evan.donohue@gmail.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control InputField " value="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div class="account">
+                    <p class="sub-text" ><a asp-area="" asp-controller="Account" asp-action="forgotPassword" style="text-decoration:none">Lost your password?</a></p>
+                    <p class="sub-text">Don’t have an account? <a asp-area="" asp-controller="Account" asp-action="Registration" style="text-decoration:none"> <small> Create an account</small></a></p>
+                </div>
+                <div>
+                    <p class="subline sub-text">Privacy Policy</p>
+                </div>
+            </form>
+        </div>
+    </div>

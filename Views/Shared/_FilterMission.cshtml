@@ -1,0 +1,104 @@
+﻿<header>
+<div class="container">
+    <nav class=" navbar navbar-expand-lg p-0">
+        <div class="col-lg-3 navbar-brand d-flex" style="padding:0;">
+            <input type="search" class="form-control no-border" style="font-family: FontAwesome; font-size: 20px;"
+                   placeholder=" &#xf002   Search mission..." aria-label="Search">
+            <img src="/images/filter.png" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"/>          
+        </div>
+
+        <div class="collapse navbar-collapse filter-collaps" id="navbarNavDropdown">
+          <div class="navbar-nav">
+
+         
+            <div class="border col nav-item data-toggle ">
+              
+                    <a class=" d-flex nav-link link-dark text-decoration-none toggle-subheading" data-bs-toggle="dropdown">
+                        Country   <div class="me-0 align-self-center"><img src="~/images/drop-down.png" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu select-chip  text-small shadow">
+                        <li><a class="dropdown-item" href="#">India</a></li>
+                        <li><a class="dropdown-item" href="#">USA</a></li>
+                        <li><a class="dropdown-item" href="#">UK</a></li>
+                        <li><a class="dropdown-item" href="#">Russia</a></li>
+                    </ul>
+              
+
+            </div>
+
+            <div class="border col nav-item data-toggle ">
+              
+                    <a class=" d-flex nav-link link-dark text-decoration-none toggle-subheading" data-bs-toggle="dropdown">
+                        City  <div class="me-0 align-self-center"><img src="~/images/drop-down.png" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu select-chip  text-small shadow">
+                        <li><a class="dropdown-item" href="#">Rajkot</a></li>
+                        <li><a class="dropdown-item" href="#">Ahmedabad</a></li>
+                        <li><a class="dropdown-item" href="#">Vadodara</a></li>
+                        <li><a class="dropdown-item" href="#">Bhavnagar</a></li>
+                    </ul>
+                
+
+            </div>
+
+            <div class="border col nav-item data-toggle ">
+               
+                    <a class=" d-flex nav-link link-dark text-decoration-none toggle-subheading" data-bs-toggle="dropdown">
+                        Theme  <div class="me-0 align-self-center"><img src="~/images/drop-down.png" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu select-chip  text-small shadow">
+                        <li><a class="dropdown-item" href="#">Theme-1</a></li>
+                        <li><a class="dropdown-item" href="#">Theme-2</a></li>
+                        <li><a class="dropdown-item" href="#">Theme-3</a></li>
+                        <li><a class="dropdown-item" href="#">Theme-4</a></li>
+                    </ul>
+               
+
+            </div>
+
+
+            <div class="border col nav-item data-toggle ">
+                
+                    <a class=" d-flex nav-link link-dark text-decoration-none toggle-subheading" data-bs-toggle="dropdown">
+                        Skill  <div class="me-0 align-self-center"><img src="~/images/drop-down.png" alt=""></div>
+                    </a>
+                    <ul class="dropdown-menu select-chip  text-small shadow">
+                        <li><a class="dropdown-item" href="#">Skill-1</a></li>
+                        <li><a class="dropdown-item" href="#">Skill-2</a></li>
+                        <li><a class="dropdown-item" href="#">Skill-3</a></li>
+                        <li><a class="dropdown-item" href="#">Skill-4</a></li>
+                    </ul>
+           
+
+            </div>
+             </div>
+        </div>
+    </nav>
+</div>
+</header>
+<hr class="m-0 p-0">
+<div class="container all-choices text-muted d-flex mt-3 flex-wrap">
+
+    <div class="chip border rounded-pill">
+        <span class="p-2">india</span>
+        <img src="~/images/cancel.png" class="p-2" onclick="this.parentElement.style.display='none'"
+             alt="not found" />
+    </div>
+    <div class="chip border text-muted rounded-pill">
+        <span class="p-2">Environment</span>
+        <img src="~/images/cancel.png" class="p-2" onclick="this.parentElement.style.display='none'"
+             alt="not found" />
+    </div>
+    <div class="chip border text-muted rounded-pill">
+        <span class="p-2">Animal</span>
+        <img src="~/images/cancel.png" class="p-2" onclick="this.parentElement.style.display='none'"
+             alt="not found" />
+    </div>
+    <div class="chip border text-muted rounded-pill">
+        <span class="p-2">Gujarat</span>
+        <img src="~/images/cancel.png" class="p-2" onclick="this.parentElement.style.display='none'"
+             alt="not found" />
+    </div>
+    <span class="close-chips">Clear All</span>
+</div>

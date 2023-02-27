@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Registration Page ";
+}
+@model CI_Platform.Entities.DataViewModel.RegistrationViewModel
+    <div class="row main">
+
+        <partial name="carousal"/>
+
+        <div class="login-details1">
+            <form class="registration_form" method="post" asp-action="registration">
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input type="text" asp-for="FirstName" class="form-control InputField" aria-describedby="emailHelp"
+                        placeholder="evan">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                  
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input type="text" asp-for="LastName" class="form-control InputField" aria-describedby="emailHelp"
+                        placeholder="donohue">
+                   <span asp-validation-for="LastName" class="text-danger"></span>
+                   
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="number" class="form-control InputField" aria-describedby="emailHelp"
+                        placeholder="9807563214">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" for="exampleInputEmail1" class="form-label">Email Address</label>
+                    <input asp-for="Email" type="email" class="form-control InputField" aria-describedby="emailHelp"
+                        placeholder="evan.donohue@gmail.com">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input asp-for="Password" type="password" class="form-control InputField " value="password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label">Confrim Password</label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control InputField " value="password">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="account">
+                    <p class="sub-text"><a asp-area="" asp-controller="Account" asp-action="forgotPassword" style="text-decoration:none">Lost your password?</a></p>
+                    <p class="sub-text">Already registered?<a asp-area="" asp-controller="Account" asp-action="login" style="text-decoration:none"><small>login now</small></a></p>
+                </div>
+                <div>
+                    <p class="subline1 sub-text">Privacy Policy</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @section scripts{
+        @{
+            <partial name="_ValidationScriptsPartial"/>
+        }
+    }
