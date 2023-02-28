@@ -1,19 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Login Page ";
 }
+@model CI_Platform.Entities.DataViewModel.LoginViewModel
     <div class="row main">
         <partial name="carousal"/>
 
         <div class="login-details">
-            <form>
+            <form method="post" asp-action="Login">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                    <input type="email" class="form-control InputField" aria-describedby="emailHelp"
+                    <label asp-for="Email" for="exampleInputEmail1" class="form-label">Email Address</label>
+                    <input asp-for="Email" type="email" class="form-control InputField" aria-describedby="emailHelp"
                         placeholder="evan.donohue@gmail.com">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control InputField " value="password">
+                    <label asp-for="Password" for="exampleInputPassword1" class="form-label">Password</label>
+                    <input asp-for="Password" type="password" class="form-control InputField " value="password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
                 <div class="account">
@@ -26,3 +29,9 @@
             </form>
         </div>
     </div>
+
+     @section scripts{
+        @{
+            <partial name="_ValidationScriptsPartial"/>
+        }
+    }
