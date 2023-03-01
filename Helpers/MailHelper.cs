@@ -18,7 +18,7 @@ namespace CI_Platform.Helpers
             configuration = _configuration;
         }
 
-        public bool Send( string to,string content)
+        public bool Send(string to, string content)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace CI_Platform.Helpers
                     Credentials = new NetworkCredential(username, password)
                 };
 
-                var mailMessage = new MailMessage("darshitchovatiya1912@gmail.com", to);
+                var mailMessage = new MailMessage("darshitchovatiya191@gmail.com", to);
                 mailMessage.Subject = "Forget Password";
                 mailMessage.Body = content;
                 mailMessage.IsBodyHtml = true;
@@ -49,6 +49,6 @@ namespace CI_Platform.Helpers
                 return false;
             }
         }
-        
+
     }
 }

@@ -37,24 +37,19 @@ namespace CI_Platform.Controllers.Account
             {
                 User user = _registerInterface.LoginViewModel(model);
                 if (user == null)
+                {
                     return StatusCode(HttpStatusCode.NotFound.GetHashCode(), "User not found or invalid password ");
-
-                return StatusCode(HttpStatusCode.OK.GetHashCode(), user);
+                }
+                else
+                {
+                    return RedirectToAction("missionLandingPlateform", "Mission");
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
             }
         }
-
-
-        [HttpGet]
-        public IActionResult forgotPassword()
-        {
-            return View();
-        }
-
-
 
 
         [HttpGet]
@@ -69,11 +64,18 @@ namespace CI_Platform.Controllers.Account
         {
             try
             {
-                User registertion = _registerInterface.RegistrationViewModel(model);
-                if (registertion == null)
-                    return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), "Bad request");
+                
 
-                return StatusCode(HttpStatusCode.OK.GetHashCode(), registertion);
+                if (_registerInterface.IsValidUserEmail(model))
+                {
+                    User registertion = _registerInterface.RegistrationViewModel(model);
+                    return RedirectToAction("login", "Account");
+                  
+                }
+                else
+                {
+                    return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), "This Mail Account Already Register !! Please Check your mail or Login your Account...");
+                }
             }
             catch (Exception ex)
             {
@@ -83,6 +85,11 @@ namespace CI_Platform.Controllers.Account
         }
 
 
+        [HttpGet]
+        public IActionResult forgotPassword()
+        {
+            return View();
+        }
 
 
         [HttpPost]
@@ -101,44 +108,47 @@ namespace CI_Platform.Controllers.Account
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
                 }
             }
             else
             {
-                ModelState.AddModelError("", _registerInterface.Message());
-                ViewBag.isForgetPasswordOpen = true;
+                
+                return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), "This Mail Account not Register !! Please Check your mail or Do Registration...");
             }
+
             return View("login");
         }
 
 
 
-        public IActionResult resetPassword()
+       
+        [HttpGet]
+        public IActionResult Resetpassword(long id)
         {
-            return View();
+            ResetPasswordViewModel model = new ResetPasswordViewModel();
+            model.UserId = id;
+            return View(model);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(User model, string code)
+        public IActionResult Resetpassword(ResetPasswordViewModel model, long id)
         {
-
-            var resetUser = _registerInterface.PasswordResets.OrderByDescending(x => x.CreatedAt).FirstOrDefault(x => x.Token.Equals(code));
-            var user = new User();
-            if (resetUser != null)
+            if (ModelState.IsValid)
             {
-                user = _registerInterface.Users.FirstOrDefault(x => x.Email.Equals(resetUser.Email));
-
-                user.Password = model.Password;
-                _registerInterface.Users.Update(user);
-                _registerInterface.SaveChanges();
-
-                return RedirectToAction("login", "Account");
+               
+                if (_registerInterface.ChangePassword(id, model))
+                {
+                    ModelState.Clear();
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Enter Same Password");
+                }
             }
 
-            return RedirectToAction("Registration", "Account");
-
+            return View();
         }
 
     }
